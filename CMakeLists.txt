@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(ayp2_plantilla_tp1_2c2023)
+project(TP1_2c2023)
 
 set(CMAKE_C_STANDARD 23)
 
@@ -12,7 +12,7 @@ set(CMAKE_CXX_FLAGS "${CXXFLAGS}")
 include_directories(include)
 include_directories(src)
 
-add_executable(ayp2_plantilla_tp1_2c2023
+add_executable(TP1_2c2023
         src/Vector.cpp
         src/Item.cpp
         main.cpp
