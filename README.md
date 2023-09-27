@@ -1,6 +1,6 @@
 # El Inventario de James
 
-Trabajo Práctico 1 de Algoritmos y Programación 2 2c2023.
+Trabajo Práctico 1 de Algoritmos y Programación 2c2023.
 Se recomienda fuertemente descargar esta plantilla u, opcionalmente, forkear el repositorio para versionarlo.
 
 ## Compilación:
