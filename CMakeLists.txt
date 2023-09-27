@@ -16,6 +16,7 @@ add_executable(TP1_2c2023
         src/Vector.cpp
         src/Item.cpp
         main.cpp
+        src/Inventario.cpp
 )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "programa.exe")
