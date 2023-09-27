@@ -51,11 +51,76 @@ void Vector::alta(Item *dato, size_t indice) {
 }
 
 Item* Vector::baja() {
-
+    Item* datoEliminar = datos[cantidadDatos];
+    if(cantidadDatos == 0){
+        throw VectorException();
+    } else{
+        Item** auxArray = new Item*[tamanioMaximo];
+        for(size_t i = 0; i < cantidadDatos - 1 ; i++){
+            auxArray[i] = datos[i];
+        }
+        cantidadDatos--;
+        delete[] datos;
+        datos = auxArray;
+        if(cantidadDatos == (tamanioMaximo/2)){
+            tamanioMaximo /= 2;
+            Item** auxDatos = new Item*[tamanioMaximo];
+            for(size_t i = 0 ; i < cantidadDatos ; i++){
+                auxDatos[i] = datos[i];
+            }
+            delete[] datos;
+            datos = auxDatos;
+        }
+    }
+    return datoEliminar;
 }
 
 Item* Vector::baja(size_t indice) {
-
+    Item* datoEliminar;
+    if (cantidadDatos == 0 || indice > cantidadDatos) {
+        throw VectorException();
+    } else {
+        datoEliminar = datos[indice];
+        if (indice == cantidadDatos) {
+            Item** auxArray = new Item *[tamanioMaximo];
+            for (size_t i = 0; i < cantidadDatos - 1; i++) {
+                auxArray[i] = datos[i];
+            }
+            cantidadDatos--;
+            delete[] datos;
+            datos = auxArray;
+            if (cantidadDatos == (tamanioMaximo / 2)) {
+                tamanioMaximo /= 2;
+                Item **auxDatos = new Item *[tamanioMaximo];
+                for (size_t i = 0; i < cantidadDatos; i++) {
+                    auxDatos[i] = datos[i];
+                }
+                delete[] datos;
+                datos = auxDatos;
+            }
+        } else{
+            Item **auxArray = new Item *[tamanioMaximo];
+            for (size_t i = 0; i < indice; i++) {
+                auxArray[i] = datos[i];
+            }
+            for (size_t i = indice; i < cantidadDatos; i++) {
+                auxArray[i] = datos[i + 1];
+            }
+            cantidadDatos--;
+            delete[] datos;
+            datos = auxArray;
+            if (cantidadDatos == (tamanioMaximo / 2)) {
+                tamanioMaximo /= 2;
+                Item **auxDatos = new Item *[tamanioMaximo];
+                for (size_t i = 0; i < cantidadDatos; i++) {
+                    auxDatos[i] = datos[i];
+                }
+                delete[] datos;
+                datos = auxDatos;
+            }
+        }
+    }
+    return datoEliminar;
 }
 
 bool Vector::vacio() {
@@ -73,10 +138,10 @@ size_t Vector::tamanio() {
 }
 
 Item*& Vector::operator[](size_t indice) {
-
+    return *&datos[indice];
 }
 
 Vector::~Vector() {
-
+    delete[] datos;
 }
 
