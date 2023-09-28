@@ -21,7 +21,7 @@ bool Item::operator==(const std::string& s) {
     return nombre == s;
 }
 
-bool Item::puzzleDefault(std::string nombreItem) {
+static bool Item::puzzleDefault(std::string nombreItem) {
     bool palabraDefault;
     string nombres[4] = {"anillo", "mechero", "moneda", "llave"};
     for(string palabras : nombres){
@@ -34,7 +34,7 @@ bool Item::puzzleDefault(std::string nombreItem) {
     return palabraDefault;
 }
 
-bool Item::municionDefault(std::string nombreItem) {
+static bool Item::municionDefault(std::string nombreItem) {
     bool palabraDefault;
     string nombres[4] = {"municion pistola", "municion escopeta", "municion rifle",
                          "municion revolver"};
@@ -48,7 +48,7 @@ bool Item::municionDefault(std::string nombreItem) {
     return palabraDefault;
 }
 
-bool Item::curativoDefault(std::string nombreItem) {
+static bool Item::curativoDefault(std::string nombreItem) {
     bool palabraDefault;
     string nombres[3] = {"bebida curativa", "botiquin", "ampolla"};
     for(string palabras : nombres){

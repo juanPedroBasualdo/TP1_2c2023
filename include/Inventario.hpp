@@ -1,30 +1,34 @@
 #ifndef INVENTARIO_H
 #define INVENTARIO_H
 
-#include "Item.hpp"
 #include <cstddef>
 #include <fstream>
+#include <iostream>
 #include "vector.hpp"
+#include "Item.hpp"
 #include "Archivos.hpp"
 
 class Inventario {
 private:
 
-    const size_t CANT_ITEMS_MAX;
+    const size_t CANT_ITEMS_MAX = 15;
     std::string nombreItem, tipoItem;
-    Item* item = new Item(nombreItem, tipoItem);
-    Vector* vectorInventario = new Vector();
-    std::fstream archivo;
+    Vector* vectorInventario;
+
 
 public:
 
+    Inventario();
+
     //pre: Debe recibir un item existente dentro del inventario.
     //post: Elimina el item del inventario.
-    void bajaItem();
+    void soltarItem();
+    void soltarItem(size_t indice);
 
     //pre: Debe recibir un objeto de tipo item.
     //post: Genera un nuevo item dentro del inventario y lo guarda.
-    void altaItem();
+    void recogerItem();
+    void recogerItem(size_t indice);
 
     //pre: -
     //post: Muestra en pantalla todos los items dentro del inventario, con su tipo determinado.
@@ -39,6 +43,7 @@ public:
     //post: carga el archivo dentro de un vector de items.
     void cargarPartida();
 
+    ~Inventario();
 };
 
 #endif
