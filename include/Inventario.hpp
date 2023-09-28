@@ -5,6 +5,7 @@
 #include <cstddef>
 #include <fstream>
 #include "vector.hpp"
+#include "Archivos.hpp"
 
 class Inventario {
 private:
@@ -12,7 +13,8 @@ private:
     const size_t CANT_ITEMS_MAX;
     std::string nombreItem, tipoItem;
     Item* item = new Item(nombreItem, tipoItem);
-    Vector* vector = new Vector();
+    Vector* vectorInventario = new Vector();
+    std::fstream archivo;
 
 public:
 

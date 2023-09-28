@@ -141,7 +141,9 @@ size_t Vector::tamanio() {
 }
 
 Item*& Vector::operator[](size_t indice) {
-    return *&datos[indice];
+    Item* referencia;
+    *referencia = *datos[indice];
+    return referencia;
 }
 
 Vector::~Vector() {

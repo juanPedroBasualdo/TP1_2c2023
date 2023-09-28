@@ -1,13 +1,13 @@
 #include "Archivos.hpp"
 
+using namespace std;
 
-Vector Archivo::cargar() {
+Vector Archivos::cargar() {
     Vector* vectorCarga = new Vector();
 
     return *vectorCarga;
 }
 
-std::ostream Archivo::guardar(Vector vector) {
+void Archivos::guardar(Vector* vector, std::istream archivoObjetivo) {
 
-    return std::ostream(nullptr);
 }

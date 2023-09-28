@@ -3,13 +3,19 @@
 #include "Vector.hpp"
 #include <fstream>
 
-class Archivo{
+class Archivos{
 private:
 
 public:
-    Vector cargar();
 
-    std::ostream guardar(Vector vector);
+    //pre: Recibe un archivo CSV, si no existe lo crea.
+    //post: Lo guarda dentro de un vector dinamico
+    static Vector cargar();
+
+    //pre: Recibe un vector y un archivo CSV objetivo, si no existe lo crea.
+    //post: guarda los contenidos del vector en un archivo csv.
+    static void guardar(Vector* vector, std::istream archivoCSVObjetivo);
+
 };
 
 
