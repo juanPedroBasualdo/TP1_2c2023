@@ -10,8 +10,11 @@ Vector::Vector() {
 void Vector::alta(Item *dato) {
     if(tamanioMaximo == 0){
         tamanioMaximo = 1;
-        datos[1] = dato;
+        Item** auxDatos = new Item*[tamanioMaximo];
+        auxDatos[0] = dato;
         cantidadDatos++;
+        delete[] datos;
+        datos = auxDatos;
     } else if(cantidadDatos == tamanioMaximo){
         tamanioMaximo *= 2;
         Item** auxDatos = new Item*[tamanioMaximo];
