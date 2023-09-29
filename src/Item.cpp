@@ -8,6 +8,8 @@ Item::Item(std::string nombre, std::string tipo) {
     this->tipo = tipo;
 }
 
+
+
 void Item::listarInformacion() {
     std::cout << "Nombre: " << nombre << " Tipo: " << tipo;
 }
@@ -21,7 +23,7 @@ bool Item::operator==(const std::string& s) {
     return nombre == s;
 }
 
-static bool Item::puzzleDefault(std::string nombreItem) {
+bool Item::puzzleDefault(std::string nombreItem) {
     bool palabraDefault;
     string nombres[4] = {"anillo", "mechero", "moneda", "llave"};
     for(string palabras : nombres){
@@ -34,7 +36,7 @@ static bool Item::puzzleDefault(std::string nombreItem) {
     return palabraDefault;
 }
 
-static bool Item::municionDefault(std::string nombreItem) {
+bool Item::municionDefault(std::string nombreItem) {
     bool palabraDefault;
     string nombres[4] = {"municion pistola", "municion escopeta", "municion rifle",
                          "municion revolver"};
@@ -48,7 +50,7 @@ static bool Item::municionDefault(std::string nombreItem) {
     return palabraDefault;
 }
 
-static bool Item::curativoDefault(std::string nombreItem) {
+bool Item::curativoDefault(std::string nombreItem) {
     bool palabraDefault;
     string nombres[3] = {"bebida curativa", "botiquin", "ampolla"};
     for(string palabras : nombres){
@@ -60,3 +62,4 @@ static bool Item::curativoDefault(std::string nombreItem) {
     }
     return palabraDefault;
 }
+

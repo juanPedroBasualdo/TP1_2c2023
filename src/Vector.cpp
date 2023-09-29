@@ -32,7 +32,7 @@ void Vector::alta(Item *dato) {
 }
 
 void Vector::alta(Item *dato, size_t indice) {
-    if(indice >= tamanioMaximo){
+    if(indice > tamanioMaximo){
         throw VectorException();
     }
     else{
@@ -54,10 +54,10 @@ void Vector::alta(Item *dato, size_t indice) {
 }
 
 Item* Vector::baja() {
-    Item* datoEliminar = datos[cantidadDatos];
     if(cantidadDatos == 0){
         throw VectorException();
     } else{
+        Item* datoEliminar = datos[cantidadDatos - 1];
         Item** auxArray = new Item*[tamanioMaximo];
         for(size_t i = 0; i < cantidadDatos - 1 ; i++){
             auxArray[i] = datos[i];
@@ -74,13 +74,13 @@ Item* Vector::baja() {
             delete[] datos;
             datos = auxDatos;
         }
+        return datoEliminar;
     }
-    return datoEliminar;
 }
 
 Item* Vector::baja(size_t indice) {
     Item* datoEliminar;
-    if (cantidadDatos == 0 || indice > cantidadDatos) {
+    if (cantidadDatos == 0 || indice >= cantidadDatos) {
         throw VectorException();
     } else {
         datoEliminar = datos[indice];
@@ -141,9 +141,11 @@ size_t Vector::tamanio() {
 }
 
 Item*& Vector::operator[](size_t indice) {
-    Item* referencia;
-    *referencia = *datos[indice];
-    return referencia;
+    if(cantidadDatos == 0 || cantidadDatos <= indice){
+        throw VectorException();
+    } else{
+        return datos[indice];
+    }
 }
 
 Vector::~Vector() {

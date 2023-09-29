@@ -12,7 +12,6 @@ class Inventario {
 private:
 
     const size_t CANT_ITEMS_MAX = 15;
-    std::string nombreItem, tipoItem;
     Vector* vectorInventario;
 
 
@@ -27,8 +26,8 @@ public:
 
     //pre: Debe recibir un objeto de tipo item.
     //post: Genera un nuevo item dentro del inventario y lo guarda.
-    void recogerItem();
-    void recogerItem(size_t indice);
+    void recogerItem(std::string nombreItem, std::string tipoItem);
+    void recogerItem(std::string nombreItem, std::string tipoItem, size_t indice);
 
     //pre: -
     //post: Muestra en pantalla todos los items dentro del inventario, con su tipo determinado.
