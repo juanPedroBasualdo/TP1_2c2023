@@ -70,7 +70,7 @@ void Inventario::recogerItem(string nombreItem, string tipoItem, size_t indice) 
         } else {
             if(tipoItem != TIPO_CURATIVO || tipoItem != TIPO_MUNICION || tipoItem != TIPO_PUZZLE){
                 cout << "Ese tipo de item no es valido." << endl;
-                getline(cin, tipoItem);
+
             } else{
                 Item* itemNuevo = new Item(nombreItem, tipoItem);
                 vectorInventario->alta(itemNuevo, indice);

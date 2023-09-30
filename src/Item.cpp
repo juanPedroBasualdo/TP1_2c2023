@@ -8,8 +8,6 @@ Item::Item(std::string nombre, std::string tipo) {
     this->tipo = tipo;
 }
 
-
-
 void Item::listarInformacion() {
     std::cout << "Nombre: " << nombre << " Tipo: " << tipo;
 }

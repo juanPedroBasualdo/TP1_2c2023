@@ -34,8 +34,7 @@ void Vector::alta(Item *dato) {
 void Vector::alta(Item *dato, size_t indice) {
     if(indice > tamanioMaximo){
         throw VectorException();
-    }
-    else{
+    } else{
         if(cantidadDatos == tamanioMaximo){
             tamanioMaximo *= 2;
             Item** auxDatos = new Item*[tamanioMaximo];
@@ -47,6 +46,9 @@ void Vector::alta(Item *dato, size_t indice) {
             delete[] datos;
             datos = auxDatos;
         } else{
+            for(size_t i = indice ; i < cantidadDatos ; i++){
+                datos[i + 1] = datos[i];
+            }
             datos[indice] = dato;
             cantidadDatos++;
         }
