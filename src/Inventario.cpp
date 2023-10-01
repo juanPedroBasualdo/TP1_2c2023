@@ -2,35 +2,39 @@
 
 using namespace std;
 
-Inventario::Inventario() {
+Inventario::Inventario(){
     vectorInventario = new Vector();
 }
 
-void Inventario::soltarItem() {
-
+void Inventario::recibirInventarioArchivo(Vector* vector) {
+    vectorInventario = vector;
 }
 
-void Inventario::recogerItem(string nombreItem, string tipoItem) {
-    while(vectorInventario->tamanio() < CANT_ITEMS_MAX){
-        if(Item::puzzleDefault(nombreItem)){
-            Item* itemNuevo = new Item(nombreItem, TIPO_PUZZLE);
-            vectorInventario->alta(itemNuevo);
-        } else if(Item::municionDefault(nombreItem)){
-            Item* itemNuevo = new Item(nombreItem, TIPO_MUNICION);
-            vectorInventario->alta(itemNuevo);
-        } else if(Item::curativoDefault(nombreItem)){
-            Item* itemNuevo = new Item(nombreItem, TIPO_CURATIVO);
-            vectorInventario->alta(itemNuevo);
-        } else {
-            if(tipoItem != TIPO_CURATIVO || tipoItem != TIPO_MUNICION || tipoItem != TIPO_PUZZLE){
-                cout << "Ese tipo de item no es valido." << endl;
-            } else{
-                Item* itemNuevo = new Item(nombreItem, tipoItem);
-                vectorInventario->alta(itemNuevo);
-            }
+void Inventario::soltarItem(const string& nombreItemObjetivo) {
+    size_t indiceItem;
+    bool itemEncontrado;
+    for(size_t i = 0 ; i < vectorInventario->tamanio() ; i++){
+        Item itemActual = *vectorInventario->operator[](i);
+        if(itemActual.operator==(nombreItemObjetivo)){
+            indiceItem = i;
+            itemEncontrado = true;
         }
     }
+    if(itemEncontrado){
+        vectorInventario->baja(indiceItem);
+        cout << "Se ha soltado/usado el objeto" << endl;
+    } else{
+        cout << "El nombre del item ingresado no se encuentra dentro del inventario!" << endl;
+    }
+}
 
+void Inventario::recogerItem(Item* itemRecoger) {
+    if (vectorInventario->tamanio() <= CANT_ITEMS_MAX) {
+        vectorInventario->alta(itemRecoger);
+        cout << "El item se agrego al inventario";
+    } else {
+        cout << "El inventario se encuentra lleno!" << endl;
+    }
 }
 
 void Inventario::consultaInventario() {
@@ -40,42 +44,15 @@ void Inventario::consultaInventario() {
     }
 }
 
-void Inventario::guardarPartida() {
-   //Archivos::guardar(vectorInventario, archivo);
+void Inventario::guardar(Archivos archivos , std::string archivo) {
+    archivos.guardar(*vectorInventario, archivo);
 }
 
-void Inventario::cargarPartida() {
-    //Archivos::cargar();
-}
 
 Inventario::~Inventario() {
     delete[] vectorInventario;
 }
 
-void Inventario::soltarItem(size_t indice) {
 
-}
 
-void Inventario::recogerItem(string nombreItem, string tipoItem, size_t indice) {
-    while(vectorInventario->tamanio() < CANT_ITEMS_MAX){
-        if(Item::puzzleDefault(nombreItem)){
-            Item* itemNuevo = new Item(nombreItem, TIPO_PUZZLE);
-            vectorInventario->alta(itemNuevo, indice);
-        } else if(Item::municionDefault(nombreItem)){
-            Item* itemNuevo = new Item(nombreItem, TIPO_MUNICION);
-            vectorInventario->alta(itemNuevo, indice);
-        } else if(Item::curativoDefault(nombreItem)){
-            Item* itemNuevo = new Item(nombreItem, TIPO_CURATIVO);
-            vectorInventario->alta(itemNuevo, indice);
-        } else {
-            if(tipoItem != TIPO_CURATIVO || tipoItem != TIPO_MUNICION || tipoItem != TIPO_PUZZLE){
-                cout << "Ese tipo de item no es valido." << endl;
-
-            } else{
-                Item* itemNuevo = new Item(nombreItem, tipoItem);
-                vectorInventario->alta(itemNuevo, indice);
-            }
-        }
-    }
-}
 

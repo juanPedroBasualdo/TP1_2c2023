@@ -13,8 +13,6 @@ add_executable(Google_Tests_run
         VectorTests.cpp
         ../src/Vector.cpp
         ../src/Item.cpp
-        ../src/Inventario.cpp
-        ../src/Archivos.cpp
 )
 
 target_link_libraries(Google_Tests_run gtest gtest_main)

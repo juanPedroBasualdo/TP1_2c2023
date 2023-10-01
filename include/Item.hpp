@@ -35,24 +35,6 @@ public:
 
     // Otros metodos relacionados al uso del item.
 
-    //pre: debe recibir un string que sea el nombre de un item
-    //post: lo compara entre distintos nombres defaults y devuelve true si coincide entre los
-    //nombres de items de tipo puzzle defaults caso contrario devuelve false.
-    static bool puzzleDefault(std::string nombreItem);
-    //nombres defaults de (algunos) items puzzle del juego: anillo, mechero, moneda, llave.
-
-    //pre: debe recibir un string que sea el nombre de un item
-    //post: devuelve true si coincide entre los nombres de items de tipo municion defaults
-    //caso contrario devuelve false.
-    static bool municionDefault(std::string nombreItem);
-    //nombres defaults de items municion del juego: municion pistola, municion escopeta,
-    //municion rifle, municion revolver.
-
-    //pre: debe recibir un string que sea el nombre de un item
-    //post: devuelve true si coincide entre los nombres de items de tipo curativos default
-    //caso contrario devuelve false.
-    static bool curativoDefault(std::string nombreItem);
-    //nombres defaults de items curativos del juego: bebida curativa, botiquin, ampolla.
 };
 
 #endif

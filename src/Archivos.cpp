@@ -2,8 +2,11 @@
 
 using namespace std;
 
+Archivos::Archivos() {
+    vectorCarga = new Vector;
+}
 
-Vector Archivos::cargar(const string& archivoCSV) {
+Vector* Archivos::cargar(const string& archivoCSV) {
     ifstream archivoCarga(archivoCSV);
     if(!archivoCarga.is_open()){
         cout << "No se pudo abrir el archivo" << endl;
@@ -20,9 +23,11 @@ Vector Archivos::cargar(const string& archivoCSV) {
                     carga += caracterLinea;
                 }
                 lineas[1] = carga;
-                Item* itemCarga = new Item(lineas[0], lineas[1]);
-                vectorCarga.alta(itemCarga);
             }
+            Item* itemCarga = new Item(lineas[0], lineas[1]);
+            vectorCarga->alta(itemCarga);
+            lineas[0] = ' ';
+            lineas[1] = ' ';
         }
     }
     archivoCarga.close();
@@ -45,6 +50,8 @@ void Archivos::guardar(const Vector& Guardado, const string& archivoCSV) {
 }
 
 Archivos::~Archivos() {
-    vectorCarga.~Vector();
+    vectorCarga->~Vector();
     vectorGuardado.~Vector();
 }
+
+

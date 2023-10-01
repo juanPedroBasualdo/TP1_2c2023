@@ -18,6 +18,14 @@ add_executable(TP1_2c2023
         main.cpp
         src/Inventario.cpp
         src/Archivos.cpp
+        src/Menu.cpp
+        include/Vector.hpp
+        include/Item.hpp
+        include/Inventario.hpp
+        include/Menu.hpp
+        include/Archivos.hpp
+        src/Logica.cpp
+        include/Logica.hpp
 )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "programa.exe")

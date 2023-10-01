@@ -4,7 +4,7 @@
 #include <cstddef>
 #include <fstream>
 #include <iostream>
-#include "vector.hpp"
+#include "Vector.hpp"
 #include "Item.hpp"
 #include "Archivos.hpp"
 
@@ -19,28 +19,21 @@ public:
 
     Inventario();
 
-    //pre: Debe recibir un item existente dentro del inventario.
-    //post: Elimina el item del inventario.
-    void soltarItem();
-    void soltarItem(size_t indice);
+    void recibirInventarioArchivo(Vector* vector);
+
+    //pre: Debe recibir el nombre de un item existente dentro del inventario.
+    //post: Elimina el item del inventario, de no existir el item, .
+    void soltarItem(const std::string& nombreItemObjetivo);
 
     //pre: Debe recibir un objeto de tipo item.
     //post: Genera un nuevo item dentro del inventario y lo guarda.
-    void recogerItem(std::string nombreItem, std::string tipoItem);
-    void recogerItem(std::string nombreItem, std::string tipoItem, size_t indice);
+    void recogerItem(Item* item);
 
     //pre: -
     //post: Muestra en pantalla todos los items dentro del inventario, con su tipo determinado.
     void consultaInventario();
 
-    //pre: debe recibir un vector de items.
-    //post: guarda los items en un archivo csv.
-    void guardarPartida();
-
-    //pre: Debe recibir un archivo csv que contenga items y sus tipos. De no existir, se crea
-    //un nuevo archivo vacio.
-    //post: carga el archivo dentro de un vector de items.
-    void cargarPartida();
+    void guardar(Archivos archivos, std::string archivo);
 
     ~Inventario();
 };
